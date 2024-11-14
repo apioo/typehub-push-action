@@ -1,0 +1,23 @@
+name: 'TypeHub push'
+description: 'This action pushes TypeAPI/TypeSchema specifications to the TypeHub platform'
+author: 'Apioo'
+branding:
+  icon: archive
+  color: blue
+inputs:
+  client_id:
+    description: 'The typehub.cloud client id, this is either your username or an app key'
+    required: true
+  client_secret:
+    description: 'The typehub.cloud client secret, this is either your password or an app secret'
+    required: true
+  directory:
+    description: 'The directory containing TypeAPI/TypeSchema specifications to TypeHub'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    TYPEHUB_CLIENT_ID: ${{ inputs.client_id }}
+    TYPEHUB_CLIENT_SECRET: ${{ inputs.client_secret }}
+    TYPEHUB_DIRECTORY: ${{ inputs.directory }}
